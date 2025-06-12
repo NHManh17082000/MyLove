@@ -81,12 +81,40 @@ $(document).ready(function () {
 
   // change to heart page
   document.getElementById("yes").addEventListener("click", function () {
-  window.location.href = "Heart.html";
+  //window.location.href = "Heart.html";
+  // Swal.fire({
+  // title: "Yêu quá đi mất 💖",
+  // text: "Đi đến nơi ngọt ngào hơn nha~",
+  // icon: "success",
+  // showConfirmButton: false,
+  // timer: 2000
+  // }).then(() => {
+  // window.location.href = "Heart.html";
+  // });
+  // Hiện thần Cupid
+  const cupid = document.getElementById("cupid");
+  const arrow = document.getElementById("arrow");
+  
+  cupid.style.opacity = "1";
+  // cupid.style.left = "50px";
+  // cupid.style.bottom = "50px";
+
+  // Đợi một chút rồi bắn tên
+  setTimeout(() => {
+    arrow.style.opacity = "1";
+    arrow.style.left = "100vw"; // mũi tên bay ngang qua màn hình
+  }, 800);
+
+  // Chuyển trang sau khi tên bay xong
+  setTimeout(() => {
+    window.location.href = "Heart.html";
+  }, 4300);
   });
+  
   //play music
   document.addEventListener("click", function playOnce() {
   const audio = document.getElementById("bgm");
-  audio.play();
-  document.removeEventListener("click", playOnce); // chỉ phát 1 lần
-  });
+  if (audio) audio.play();
+  document.removeEventListener("click", playOnce);
+});
 });

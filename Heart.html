@@ -62,10 +62,27 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 120px;
       transform: translate(-50%, -50%);
       z-index: 15;
       pointer-events: none;
+    }
+    
+    
+    .heart-avatar {
+      clip-path: url(#heart-shape);
+      -webkit-clip-path: url(#heart-shape);
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+    
+      /* Hiệu ứng mờ viền & chiều sâu */
+      box-shadow:
+        0 0 20px 10px rgba(255, 92, 164, 0.5),     /* viền ngoài mờ hồng */
+        inset 0 0 20px rgba(0, 0, 0, 0.4);          /* bóng bên trong */
+    
+      filter: brightness(0.95) contrast(1.1);       /* nhẹ nhàng tối + rõ nét */
+    
+      border-radius: 20px; /* làm mượt mép ảnh để viền mờ hiển thị đẹp hơn */
     }
 
     @keyframes animate {
@@ -78,7 +95,51 @@
 </head>
 <body>
 
-<img src="avatar.jpg" class="center-logo" alt="Manh<3Thuy">
+ <audio id="bgm" src="sound/heart.mp3" autoplay></audio>
+
+<script>
+  // Phát nhạc tự động
+  const bgm = document.getElementById("bgm");
+  if (bgm) {
+    const playPromise = bgm.play();
+    if (playPromise !== undefined) {
+      playPromise.catch((error) => {
+        console.warn("Autoplay bị chặn:", error);
+      });
+    }
+  }
+
+  // Chuyển sang QR.html sau 30 giây
+  setTimeout(() => {
+    // Hiệu ứng mờ dần trước khi chuyển trang (tùy chọn)
+    document.body.style.transition = "opacity 1.5s";
+    document.body.style.opacity = 0;
+
+    setTimeout(() => {
+      window.location.href = "QR.html";
+    }, 1500); // đợi hiệu ứng mờ kết thúc
+  }, 30000);
+</script>
+ 
+<svg width="0" height="0" style="position: absolute;">
+  <defs>
+    <clipPath id="heart-shape" clipPathUnits="objectBoundingBox">
+      <path d="
+        M0.5,0.9 
+        C0.1,0.6 0,0.35 0,0.2 
+        C0,0.05 0.15,0 0.3,0 
+        C0.4,0 0.5,0.1 0.5,0.25 
+        C0.5,0.1 0.6,0 0.7,0 
+        C0.85,0 1,0.05 1,0.2 
+        C1,0.35 0.9,0.6 0.5,0.9 Z" />
+    </clipPath>
+  </defs>
+</svg>
+
+
+<img src="img/avatar.jpg" class="center-logo heart-avatar" alt="Manh<3Thuy">
+
+
 
 <div class="heart-container">
   <canvas id="pinkboard"></canvas>
