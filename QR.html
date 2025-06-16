@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <title>Soft Floating Text with Vietnamese</title>
+  <meta charset="UTF-8">
+  <title>Lời Chúc Không Gian 3D</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
@@ -11,8 +12,63 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background: black;
-      perspective: 1000px;
+      background: radial-gradient(ellipse at center, #000 0%, #111 100%);
+      font-family: 'Dancing Script', cursive;
+      perspective: 1200px;
+      perspective-origin: center;
+    }
+
+    .scene {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.2s ease;
+    }
+
+    .text {
+      position: absolute;
+      top: 0;
+      font-size: 42px;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transform-style: preserve-3d;
+      animation:
+        gentleFall3D 8s linear forwards,
+        rgbShift 8s ease-in-out infinite;
+      color: #fff;
+      text-shadow:
+        0 0 8px #fff,
+        0 0 16px #f0f,
+        0 0 24px #f00,
+        0 0 32px #0ff;
+      user-select: none;
+    }
+
+    @keyframes gentleFall3D {
+      0% {
+        transform: translate3d(0, -10vh, var(--z)) scale(0.9);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate3d(0, 110vh, var(--z)) scale(1.1);
+        opacity: 0;
+      }
+    }
+
+    @keyframes rgbShift {
+      0%, 100% {
+        color: #ffffff;
+        text-shadow: 0 0 8px #ffffff, 0 0 20px #ff83a8;
+      }
+      50% {
+        color: #ff83a8;
+        text-shadow: 0 0 8px #ff83a8, 0 0 20px #ff5e7f;
+      }
     }
 
     .firefly {
@@ -30,102 +86,6 @@
       100% { opacity: 1; transform: scale(1.5); }
     }
 
-    .scene {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      overflow: visible;
-      transform-style: preserve-3d;
-      transition: transform 0.1s ease-out;
-      will-change: transform;
-      z-index: 10;
-    }
-
-    .text {
-      position: absolute;
-      top: 0;
-      font-family: 'Dancing Script', cursive;
-      font-size: 42px;
-      white-space: nowrap;
-      pointer-events: none;
-      animation:
-        gentleFall 14s cubic-bezier(0.42, 0, 0.58, 1) infinite,
-        rgbShift 14s ease-in-out infinite;
-      opacity: 0;
-      color: #fff;
-      text-shadow:
-        0 0 8px #fff,
-        0 0 20px #f0f,
-        0 0 30px #f00,
-        0 0 40px #0ff,
-        0 0 50px #f0f,
-        0 0 60px #f00,
-        0 0 70px #0ff;
-      user-select: none;
-      font-weight: 400;
-      transform-origin: center;
-    }
-
-    @keyframes gentleFall {
-      0% {
-        transform: translateY(-10vh) scale(0.9);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      50% {
-        transform: translateY(50vh) scale(1.2);
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(110vh) scale(0.9);
-        opacity: 0;
-      }
-    }
-
-    @keyframes rgbShift {
-      0%, 100% {
-        color: #ffffff;
-        text-shadow:
-          0 0 8px #ffffff,
-          0 0 20px #ff83a8,
-          0 0 30px #d12c4b,
-          0 0 40px #7feaff;
-      }
-      25% {
-        color: #ff83a8;
-        text-shadow:
-          0 0 8px #ff83a8,
-          0 0 20px #ff5e7f,
-          0 0 30px #d12c4b,
-          0 0 40px #7feaff;
-      }
-      50% {
-        color: #d12c4b;
-        text-shadow:
-          0 0 8px #d12c4b,
-          0 0 20px #ff2a82,
-          0 0 30px #8b1031,
-          0 0 40px #7feaff;
-      }
-      75% {
-        color: #7feaff;
-        text-shadow:
-          0 0 8px #7feaff,
-          0 0 20px #4ec9ff,
-          0 0 30px #2185a1,
-          0 0 40px #7feaff;
-      }
-    }
-
-    .heart {
-      font-size: 48px;
-    }
-
     .petal {
       position: absolute;
       width: 12px;
@@ -134,160 +94,160 @@
       border-radius: 60% 40% 60% 40% / 70% 90% 10% 30%;
       opacity: 0.85;
       pointer-events: none;
-      animation: petalFall linear infinite;
+      animation: petalFall 10s linear forwards;
       filter: drop-shadow(0 0 2px #d12c4b);
-      transform-origin: center;
+      transform-style: preserve-3d;
     }
 
     @keyframes petalFall {
       0% {
-        transform: translateY(-10vh) rotate(0deg) translateX(0);
+        transform: translateY(-10vh) rotate(0deg);
         opacity: 0;
       }
       10% {
         opacity: 1;
       }
       100% {
-        transform: translateY(110vh) rotate(360deg) translateX(30px);
+        transform: translateY(110vh) rotate(360deg);
         opacity: 0;
       }
     }
+
+    .falling-image {
+      position: absolute;
+      top: 0;
+      pointer-events: none;
+      animation: gentleFall linear forwards;
+      opacity: 0.85;
+      filter: drop-shadow(0 0 8px white);
+      /* ✅ Bỏ transform ở đây vì đã có trong keyframe */
+    }
+    @keyframes gentleFall {
+      0% {
+        transform: translateY(-10vh) translateZ(var(--z));
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) translateZ(var(--z));
+        opacity: 0;
+      }
+    }
+
   </style>
 </head>
 <body>
   <div class="scene" id="scene"></div>
 
   <script>
-    // Các bạn đổi chữ ở đây nhé, chỉ đổi ở trong dấu " ... " này thôi nhé không được xóa dấu này đi nhé 
     const texts = [
       "Anh yêu em", "Em nhớ anh", "Mãi bên nhau", "Hạnh phúc", "Vĩnh cửu",
       "Tình yêu", "Ngọt ngào", "Bên nhau", "❤️", "Anh à", "Mong em", "Thương em",
       "Mãi mãi", "Chỉ có em", "Trọn đời"
     ];
+    const images = [
+      "img/avatar.jpg",
+      "img/cupid.png",
+      "img/cuteCat.jpg"
+    ];
 
     const scene = document.getElementById('scene');
 
-    // Zoom & Rotation
-    let scale = 1;
-    let rotateX = 0;
-    let rotateY = 0;
+    // Zoom và xoay 3D
+    let scale = 1, rotateX = 0, rotateY = 0, targetScale = 1;
 
-    function updateTransform() {
+    function smoothTransform() {
       scene.style.transform = `scale(${scale}) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+      requestAnimationFrame(smoothTransform);
     }
+    smoothTransform();
 
-    document.addEventListener('wheel', function (e) {
+    document.addEventListener('wheel', e => {
       e.preventDefault();
-      scale += e.deltaY * -0.001;
-      scale = Math.min(Math.max(0.5, scale), 2);
-      updateTransform();
+      targetScale += e.deltaY * -0.001;
+      targetScale = Math.min(Math.max(0.5, targetScale), 2);
+      scale += (targetScale - scale) * 0.1;
     }, { passive: false });
-
-    let initialDistance = null;
-
-    function getDistance(touches) {
-      const dx = touches[0].clientX - touches[1].clientX;
-      const dy = touches[0].clientY - touches[1].clientY;
-      return Math.sqrt(dx * dx + dy * dy);
-    }
-
-    scene.addEventListener('touchstart', e => {
-      if (e.touches.length === 2) {
-        initialDistance = getDistance(e.touches);
-      }
-    }, { passive: false });
-
-    scene.addEventListener('touchmove', e => {
-      if (e.touches.length === 2 && initialDistance !== null) {
-        e.preventDefault();
-        const currentDistance = getDistance(e.touches);
-        const delta = currentDistance - initialDistance;
-        scale += delta * 0.002;
-        scale = Math.min(Math.max(0.5, scale), 2);
-        updateTransform();
-        initialDistance = currentDistance;
-      }
-    }, { passive: false });
-
-    scene.addEventListener('touchend', e => {
-      if (e.touches.length < 2) {
-        initialDistance = null;
-      }
-    });
 
     document.addEventListener('mousemove', e => {
       const x = (e.clientX / window.innerWidth - 0.5) * 2;
       const y = (e.clientY / window.innerHeight - 0.5) * 2;
       rotateY = x * 20;
       rotateX = -y * 15;
-      updateTransform();
     });
 
+    // Thiết bị di động
     if (window.DeviceOrientationEvent) {
       window.addEventListener('deviceorientation', e => {
-        rotateY = e.gamma * 1.5 || 0;
-        rotateX = e.beta * 1.2 || 0;
-        updateTransform();
+        rotateY = (e.gamma || 0) * 1.5;
+        rotateX = (e.beta || 0) * 1.2;
       });
     }
 
     function createText() {
       const el = document.createElement("div");
-      const content = texts[Math.floor(Math.random() * texts.length)];
       el.className = "text";
-      if (content === "❤️") el.classList.add("heart");
-      el.textContent = content;
+      el.textContent = texts[Math.floor(Math.random() * texts.length)];
 
-      const left = Math.random() * 100;
-      const duration = 14;
-      const delay = Math.random() * 6;
+      const col = Math.floor(Math.random() * 6); // Chia 6 cột
+      const z = (Math.random() - 0.5) * 800; // -400px đến 400px
+      el.style.left = (10 + col * 15) + "vw";
+      el.style.setProperty('--z', `${z}px`);
 
-      el.style.left = left + "vw";
-      el.style.top = "0";
-      el.style.animationDuration = `${duration}s, ${duration}s`;
-      el.style.animationDelay = `${delay}s, ${delay}s`;
+      const fallDuration = 6 + Math.random() * 5; // 6s đến 11s
+      el.style.animationDuration = `${fallDuration}s`;
+
       scene.appendChild(el);
-
-      setTimeout(() => {
-        scene.removeChild(el);
-      }, (duration + delay) * 1000);
+      setTimeout(() => scene.removeChild(el), (fallDuration + 0.5) * 1000);
     }
 
-    setInterval(createText, 300);
-    for (let i = 0; i < 40; i++) createText();
+    function createImage() {
+      const img = document.createElement("img");
+      img.className = "falling-image";
+      img.src = images[Math.floor(Math.random() * images.length)];
+      img.style.width = "60px";
 
-    for (let i = 0; i < 80; i++) {
-      const firefly = document.createElement('div');
-      firefly.className = 'firefly';
-      firefly.style.left = Math.random() * 100 + 'vw';
-      firefly.style.top = Math.random() * 100 + 'vh';
-      firefly.style.animationDuration = (1 + Math.random() * 2) + 's';
-      document.body.appendChild(firefly);
+      const col = Math.floor(Math.random() * 6);
+      const z = (Math.random() - 0.5) * 800;
+      img.style.left = (10 + col * 15) + "vw";
+      img.style.setProperty('--z', `${z}px`);
+
+      const fallDuration = 6 + Math.random() * 5; // 12s–20s
+      img.style.animationDuration = `${fallDuration}s`;
+
+      scene.appendChild(img);
+      setTimeout(() => scene.removeChild(img), (fallDuration + 1) * 1000);
     }
+
 
     function createPetal() {
       const petal = document.createElement('div');
       petal.className = 'petal';
-
-      const left = Math.random() * 100;
-      const duration = 10 + Math.random() * 5;
-      const delay = Math.random() * 5;
-
-      petal.style.left = left + "vw";
+      petal.style.left = (10 + Math.random() * 80) + "vw";
       petal.style.top = "-5vh";
-      petal.style.animationDuration = `${duration}s`;
-      petal.style.animationDelay = `${delay}s`;
+      petal.style.animationDuration = `${8 + Math.random() * 4}s`;
       petal.style.transform = `rotate(${Math.random() * 360}deg)`;
-
       scene.appendChild(petal);
-
-      setTimeout(() => {
-        scene.removeChild(petal);
-      }, (duration + delay) * 1000);
+      setTimeout(() => scene.removeChild(petal), 12000);
     }
 
-    setInterval(createPetal, 300);
-    for (let i = 0; i < 20; i++) createPetal();
+    for (let i = 0; i < 80; i++) {
+      const f = document.createElement('div');
+      f.className = 'firefly';
+      f.style.left = Math.random() * 100 + 'vw';
+      f.style.top = Math.random() * 100 + 'vh';
+      f.style.animationDuration = (1 + Math.random() * 2) + 's';
+      document.body.appendChild(f);
+    }
+
+    setInterval(createText, 300);
+    setInterval(createImage, 1200); // tạo 1 hình rơi mỗi 1.2s
+    setInterval(createPetal, 400);
+    for (let i = 0; i < 40; i++) setTimeout(createText, i * 100);
+    for (let i = 0; i < 20; i++) setTimeout(createPetal, i * 200);
+    for (let i = 0; i < 15; i++) setTimeout(createImage, i * 200);
   </script>
 </body>
 </html>

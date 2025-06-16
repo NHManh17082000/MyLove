@@ -95,30 +95,30 @@
 </head>
 <body>
 
- <audio id="bgm" src="sound/heart.mp3" autoplay></audio>
+ <!-- <audio id="bgm" src="sound/heart.mp3" autoplay></audio> -->
 
 <script>
   // Phát nhạc tự động
-  const bgm = document.getElementById("bgm");
-  if (bgm) {
-    const playPromise = bgm.play();
-    if (playPromise !== undefined) {
-      playPromise.catch((error) => {
-        console.warn("Autoplay bị chặn:", error);
-      });
-    }
-  }
+  // const bgm = document.getElementById("bgm");
+  // if (bgm) {
+  //   const playPromise = bgm.play();
+  //   if (playPromise !== undefined) {
+  //     playPromise.catch((error) => {
+  //       console.warn("Autoplay bị chặn:", error);
+  //     });
+  //   }
+  // }
 
   // Chuyển sang QR.html sau 30 giây
-  setTimeout(() => {
-    // Hiệu ứng mờ dần trước khi chuyển trang (tùy chọn)
-    document.body.style.transition = "opacity 1.5s";
-    document.body.style.opacity = 0;
+  // setTimeout(() => {
+  //   // Hiệu ứng mờ dần trước khi chuyển trang (tùy chọn)
+  //   document.body.style.transition = "opacity 1.5s";
+  //   document.body.style.opacity = 0;
 
-    setTimeout(() => {
-      window.location.href = "QR.html";
-    }, 1500); // đợi hiệu ứng mờ kết thúc
-  }, 30000);
+  //   setTimeout(() => {
+  //     window.location.href = "QR.html";
+  //   }, 1500); // đợi hiệu ứng mờ kết thúc
+  // }, 30000);
 </script>
  
 <svg width="0" height="0" style="position: absolute;">

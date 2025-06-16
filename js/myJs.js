@@ -79,37 +79,79 @@ $(document).ready(function () {
   });
 
 
-  // change to heart page
-  document.getElementById("yes").addEventListener("click", function () {
-  //window.location.href = "Heart.html";
-  // Swal.fire({
-  // title: "Yêu quá đi mất 💖",
-  // text: "Đi đến nơi ngọt ngào hơn nha~",
-  // icon: "success",
-  // showConfirmButton: false,
-  // timer: 2000
-  // }).then(() => {
-  // window.location.href = "Heart.html";
+  // // change to heart page
+  // document.getElementById("yes").addEventListener("click", function () {
+  // //window.location.href = "Heart.html";
+  // // Swal.fire({
+  // // title: "Yêu quá đi mất 💖",
+  // // text: "Đi đến nơi ngọt ngào hơn nha~",
+  // // icon: "success",
+  // // showConfirmButton: false,
+  // // timer: 2000
+  // // }).then(() => {
+  // // window.location.href = "Heart.html";
+  // // });
+  // // Hiện thần Cupid
+  // const cupid = document.getElementById("cupid");
+  // const arrow = document.getElementById("arrow");
+  
+  // cupid.style.opacity = "1";
+  // // cupid.style.left = "50px";
+  // // cupid.style.bottom = "50px";
+
+  // // Đợi một chút rồi bắn tên
+  // setTimeout(() => {
+  //   arrow.style.opacity = "1";
+  //   arrow.style.left = "100vw"; // mũi tên bay ngang qua màn hình
+  // }, 800);
+
+  // // Chuyển trang sau khi tên bay xong
+  // setTimeout(() => {
+  //   window.location.href = "Heart.html";
+  // }, 4300);
   // });
-  // Hiện thần Cupid
+
+  document.getElementById("yes").addEventListener("click", function () {
   const cupid = document.getElementById("cupid");
   const arrow = document.getElementById("arrow");
-  
-  cupid.style.opacity = "1";
-  // cupid.style.left = "50px";
-  // cupid.style.bottom = "50px";
+  const frame = document.getElementById("heartFrame");
+  const wrapper = document.querySelector(".wrapper");
+  //const overlay = document.getElementById("fadeOverlay");
 
-  // Đợi một chút rồi bắn tên
+  // Hiện thần Cupid
+  cupid.style.opacity = "1";
+
+  // Sau 0.8s mũi tên bay
   setTimeout(() => {
     arrow.style.opacity = "1";
-    arrow.style.left = "100vw"; // mũi tên bay ngang qua màn hình
+    arrow.style.left = "100vw";
   }, 800);
 
-  // Chuyển trang sau khi tên bay xong
+  // Sau 4.3s: hiện heart.html + ẩn Cupid
   setTimeout(() => {
-    window.location.href = "Heart.html";
+    frame.src = "Heart.html";
+    frame.style.display = "block";
+    wrapper.style.display = "none";
+
+    // 👉 Ẩn Cupid tại đây (ngay khi chuyển sang heart)
+    cupid.style.opacity = "0";
+
+    // Sau 60s chuyển tiếp sang QR.html
+    setTimeout(() => {
+      //overlay.style.opacity = "1";
+      console.log("60s passed. Changing to QR.html...");
+
+      setTimeout(() => {
+        frame.src = "QR.html";
+        console.log("Frame changed to QR.html");
+      }, 1000); // hiệu ứng overlay
+    }, 6000);
+
   }, 4300);
-  });
+});
+
+
+
   
   //play music
   document.addEventListener("click", function playOnce() {
