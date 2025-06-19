@@ -80,6 +80,12 @@ $(document).ready(function () {
   $("#no").click(() => {
     if (screen.width >= 900) switchButton();
   });
+  //for mobile
+  $("#no").on("touchstart", function () {
+  if (n < 1) switchButton();
+  else moveButton();
+  n++;
+  });
 
 
   // // change to heart page
