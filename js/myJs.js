@@ -82,6 +82,8 @@ $(document).ready(function () {
   });
   //for mobile
   $("#no").on("touchstart", function () {
+  e.preventDefault();
+  e.stopPropagation(); // ngăn sự kiện lan ra ngoài
   if (n < 1) switchButton();
   else moveButton();
   n++;
