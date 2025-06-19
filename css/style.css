@@ -108,3 +108,25 @@ header h4 {
     -webkit-transition: all 0.3s ease-out;
   }
 }
+#text3 {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#text4 {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 600px) {
+  #text3 {
+    font-size: 6vw;
+  }
+
+  #text4 {
+    font-size: 4.5vw;
+  }
+}

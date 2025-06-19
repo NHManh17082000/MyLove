@@ -55,13 +55,16 @@ $(document).ready(function () {
   function moveButton() {
     var audio = new Audio("sound/Swish1.mp3");
     audio.play();
-    if (screen.width <= 600) {
-      var x = Math.random() * 300;
-      var y = Math.random() * 500;
-    } else {
-      var x = Math.random() * 500;
-      var y = Math.random() * 500;
-    }
+    // if (screen.width <= 600) {
+    //   var x = Math.random() * 300;
+    //   var y = Math.random() * 500;
+    // } else {
+    //   var x = Math.random() * 500;
+    //   var y = Math.random() * 500;
+    // }
+    var x = Math.random() * (window.innerWidth - 100); // trừ kích thước nút
+    var y = Math.random() * (window.innerHeight - 100);
+
     var left = x + "px";
     var top = y + "px";
     $("#no").css("left", left);

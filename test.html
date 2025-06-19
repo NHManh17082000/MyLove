@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QR Trái Tim</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    #wrapper {
+      position: relative;
+      width: 220px;
+      height: 220px;
+    }
+    #qrcode {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+    #heart {
+      position: absolute;
+      top: 90px;
+      left: 90px;
+      width: 40px;
+      height: 40px;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <h3>Mã QR tình yêu ❤️</h3>
+  <div id="wrapper">
+    <div id="qrcode"></div>
+    <img id="heart" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Emoji_u2764.svg/1024px-Emoji_u2764.svg.png" alt="heart" />
+  </div>
+
+  <script>
+    new QRCode(document.getElementById("qrcode"), {
+      text: "https://heweilai.com/love-code/star.html",
+      width: 220,
+      height: 220,
+      colorDark : "#d61f69",
+      colorLight : "#ffffff",
+      correctLevel : QRCode.CorrectLevel.H
+    });
+  </script>
+</body>
+</html>
